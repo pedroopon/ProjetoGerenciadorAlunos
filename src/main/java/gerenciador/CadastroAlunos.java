@@ -12,7 +12,8 @@ public class CadastroAlunos {
             System.out.println("Menu:");
             System.out.println("1. Cadastrar aluno");
             System.out.println("2. Mostrar todos os alunos cadastrados");
-            System.out.println("3. Sair");
+            System.out.println("3. Excluir aluno");
+            System.out.println("4. Sair");
             System.out.print("Escolha uma opção: ");
             int opcao = scanner.nextInt();
 
@@ -33,6 +34,23 @@ public class CadastroAlunos {
                     System.out.println(aluno);
                 }
             } else if (opcao == 3) {
+                System.out.print("Digite o nome do aluno que deseja excluir: ");
+                String nomeExcluir = scanner.next();
+                boolean alunoEncontrado = false;
+
+                for (Aluno aluno : alunos) {
+                    if (aluno.getNome().equalsIgnoreCase(nomeExcluir)) {
+                        alunos.remove(aluno);
+                        alunoEncontrado = true;
+                        System.out.println("Aluno removido com sucesso!");
+                        break;
+                    }
+                }
+                if (!alunoEncontrado) {
+                    System.out.println("Aluno não encontrado.");
+                }
+
+            } else if (opcao == 4) {
                 System.out.println("Saindo...");
                 break;
             } else {
